@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../../components/layout/Navbar";
-import ProductCard from "../../components/layout/ProductCard";
+import Navbar from "../components/layout/Navbar";
+import ProductCard from "../components/layout/ProductCard";
 
 const Home: React.FC = () => {
   return (

@@ -21,8 +21,8 @@ const Card: React.FC<CardProps> = ({ id, name, description, price, quantity, ima
           <p className="text-red-600 font-semibold">{price}</p>
         </div>
         <div className="mt-2">
-          <p className="font-medium text-gray-800">{description}</p>
-          <p className="font-medium text-gray-800">Jumlah: {quantity}</p>
+          <p className="font-medium text-md text-gray-800">{description}</p>
+          <p className="font-medium  text-gray-800">Jumlah: {quantity}</p>
         </div>
       </div>
     </div>
