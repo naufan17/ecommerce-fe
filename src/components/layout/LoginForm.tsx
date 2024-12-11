@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, FormEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Dispatch } from "redux";
 import { AppDispatch } from "../../store/store";
 import { loginUser } from "../../store/authThunk";
@@ -110,12 +110,12 @@ const LoginForm: React.FC = () => {
         </form>
         <p className="mt-5 text-center text-base text-gray-500">
           Belum punya akun?{" "}
-          <a
-            href="/register"
+          <Link
+            to="/register"
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
             Daftar
-          </a>
+          </Link>
         </p>
       </div>
     </div>

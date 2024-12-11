@@ -5,7 +5,7 @@ import { AppDispatch } from "../../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../store/authThunk";
 import { setError } from "../../store/authSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterForm: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -159,12 +159,12 @@ const RegisterForm: React.FC = () => {
 
         <p className="mt-10 text-center text-base text-gray-500">
           Sudah punya akun?{" "}
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
             Masuk
-          </a>
+          </Link>
         </p>
       </div>
     </div>
