@@ -6,13 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser, profileUser } from "../../store/authThunk";
 import { useNavigate } from "react-router-dom";
 
-interface ProfileProps {
-  name: string;
-  email: string;
-  gender: string;
-}
-
-const Profile: React.FC<ProfileProps> = () => {
+const Profile: React.FC = () => {
   const { user } = useSelector((state: any) => state.auth);
   const dispatch: Dispatch<any> = useDispatch<AppDispatch>();
   const navigate = useNavigate();
