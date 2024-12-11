@@ -80,6 +80,7 @@ const ProductCard: React.FC = () => {
             price={product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
             quantity={product.quantity}
             image={product.image}
+            category={product.category}
           />
         ))}
       </div>

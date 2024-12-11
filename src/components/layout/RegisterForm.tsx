@@ -26,7 +26,10 @@ const RegisterForm: React.FC = () => {
   };
 
   useEffect(() => {
-    if (isRegistered) navigate("/login");
+    if (isRegistered) {
+      alert ("Akun berhasil didaftarkan");
+      navigate("/login")
+    };
   }, [isRegistered, navigate]);
 
   return (
