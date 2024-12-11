@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { loginUser } from "./authThunk";
+import { loginUser, registerUser } from "./authThunk";
 
 export interface AuthState {
   accessToken: string | null;
+  isRegistered: boolean;
   user: {
     name: string;
     email: string;
@@ -14,6 +15,7 @@ export interface AuthState {
 
 const initialState: AuthState = {
   accessToken: null,
+  isRegistered: false,
   user: null,
   loading: false,
   error: null
@@ -26,6 +28,11 @@ export const authSlice = createSlice({
     setlogin: (state, action: PayloadAction<{ accessToken: string }>) => {
       state.accessToken = action.payload.accessToken;
       sessionStorage.setItem("accessToken", action.payload.accessToken);
+    },
+    setRegister: (state) => {
+      state.isRegistered = true;
+      state.error = null;
+      state.loading = false;
     },
     setLogout: (state) => {
       state.accessToken = null;
@@ -54,9 +61,16 @@ export const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+      .addCase(registerUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   }
 });
 
-export const { setlogin, setLogout, setUserProfile, setError } = authSlice.actions;
+export const { setlogin, setRegister, setLogout, setUserProfile, setError } = authSlice.actions;
 
 export default authSlice.reducer;
