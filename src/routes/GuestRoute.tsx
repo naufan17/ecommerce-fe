@@ -1,17 +1,17 @@
-// import React, { ReactNode }  from "react";
-// import { Navigate } from "react-router-dom";
-// import { useAuth } from "../context/UseAuth";
+import React from "react";
+import { useLocation, Navigate } from "react-router-dom";
 
-// interface GuestRouteProps {
-//   children: ReactNode;
-// }
+interface GuestRouteProps {
+  children: JSX.Element
+}
 
-// const GuestRoute: React.FC<GuestRouteProps> = ({ children }) => {
-//   const isAuthenticated = useAuth();
+const GuestRoute: React.FC<GuestRouteProps> = ({ children }) => {
+  const accessToken = sessionStorage.getItem("accessToken");
+  const location = useLocation();
 
-//   if (isAuthenticated) return <Navigate to="/" />;
+  if (accessToken) return <Navigate to="/profile" state={{ from: location }} replace />;
 
-//   return <>{children}</>;
-// };
+  return children;
+};
 
-// export default GuestRoute;
+export default GuestRoute;

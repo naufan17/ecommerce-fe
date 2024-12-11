@@ -1,11 +1,12 @@
 import React from "react";
 import Navbar from "../components/layout/Navbar";
+import Main from "../components/layout/Profile";
 
 const Profile: React.FC = () => {
   return (
     <div className="bg-gradient-to-r from-indigo-100 min-h-screen">
       <Navbar/>
-      <h1>Profile</h1>
+      <Main/>
     </div>
   );
 };

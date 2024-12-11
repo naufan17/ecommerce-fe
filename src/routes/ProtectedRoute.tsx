@@ -1,17 +1,17 @@
-// import React, { ReactNode }  from "react";
-// import { Navigate } from "react-router-dom";
-// import { useAuth } from "../context/UseAuth";
+import React from "react";
+import { useLocation, Navigate } from "react-router-dom";
 
-// interface ProtectedRouteProps {
-//   children: ReactNode;
-// }
+interface ProtectedRouteProps {
+  children: JSX.Element
+}
 
-// const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-//   const isAuthenticated = useAuth();
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
+  const accessToken = sessionStorage.getItem("accessToken");
+  const location = useLocation();
 
-//   if (!isAuthenticated) return <Navigate to="/login" />;
+  if (!accessToken) return <Navigate to="/login" state={{ from: location }} replace />;
 
-//   return <>{children}</>;
-// };
+  return children;
+};
 
-// export default ProtectedRoute;
+export default ProtectedRoute;
