@@ -11,13 +11,13 @@ import ProductCreate from './pages/product/ProductCreate'
 import { store } from './store/store'
 import ProtectedRoute from './routes/ProtectedRoute'
 import GuestRoute from './routes/GuestRoute'
-// import { AuthProvider } from './context/AuthContext'
+import ProductDetail from './pages/product/ProductDetail'
+import ProductUpdate from './pages/product/ProductUpdate'
 
 const App: React.FC = () => {
   return (
     <Router>
       <Provider store={store}>
-      {/* <AuthProvider> */}
         <Routes>
           <Route 
             path="/" 
@@ -53,6 +53,18 @@ const App: React.FC = () => {
             element={
               <ProtectedRoute>
                 <ProductCreate/>
+              </ProtectedRoute>
+            }/>
+          <Route 
+            path="/product/:id"
+            element={
+              <ProductDetail/>
+            }/>
+          <Route
+            path='/product/update/:id'
+            element={
+              <ProtectedRoute>
+                <ProductUpdate/>
               </ProtectedRoute>
             }/>
           <Route 
